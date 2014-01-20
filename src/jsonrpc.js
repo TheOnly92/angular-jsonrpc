@@ -91,7 +91,7 @@ angular.module('jsonrpc', ['uuid']).provider('jsonrpc', function() {
      *     });
      *
      * @param {string} name The name of the service. This is the prefix used for
-     *     all methods created through this service.
+     *     all methods created through this service. If null, no prefix is used.
      * @param {string} path Optional path for this service.
      * @constructor
      */
@@ -111,7 +111,13 @@ angular.module('jsonrpc', ['uuid']).provider('jsonrpc', function() {
      */
     Service.prototype.createMethod = function(name, config) {
       var path = this.path;
-      var method = this.serviceName + '.' + name;
+      var method;
+      if (this.serviceName) {
+        method = this.serviceName + '.' + name;
+      } else {
+        method = name;
+      }
+
       return function(data) {
         return jsonrpc.request(path, method, data, config);
       };
