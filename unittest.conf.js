@@ -6,10 +6,15 @@
 basePath = '';
 
 
+module.exports = function(config) {
+  config.set({
+    // your config
+    frameworks: ["jasmine"]
+  });
+};
+
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
   'components/angular/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/angular-uuid/uuid.js',
@@ -49,7 +54,7 @@ colors = true;
 
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-logLevel = LOG_INFO;
+logLevel = 'LOG_INFO';
 
 
 // enable / disable watching file and executing tests whenever any file changes
