@@ -28,7 +28,7 @@ angular.module('jsonrpc', ['uuid']).provider('jsonrpc', function() {
         id: id
       };
       if (angular.isDefined(options.data)) {
-        payload.params = options.data;
+        payload.params = [options.data];
       }
 
       // Transformers to extract the response data.
